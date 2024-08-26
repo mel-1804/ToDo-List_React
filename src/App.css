@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.fondo {
+    width: 600px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    background-image: url("./assets/gym.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+.papel {
+    width: 520px;
+    height: 470px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    transform: rotate(-3deg);
+}
+
+.titulo{
+    font-size: 30px;
+    color: rgb(34, 82, 82);
+    display: flex;
+    justify-content: center;
+    
+}
+
+.mancuerna{
+    font-size: 20px;
+    color: rgb(54, 127, 127);
+    margin-top: 12px;
+    margin-inline: 12px;
+}
+
+
+li, .entrada{
+   border: solid;
+   border-color: rgb(93, 158, 158);
+   border-radius: 15px;
+}
