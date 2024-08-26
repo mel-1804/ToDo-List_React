@@ -2,14 +2,18 @@ import { useState } from "react"
 
 export function ToDoList() {
 
-const [actividad, setActividad] = useState ({
-    actividad: " "
-});
+const [valorActividad, setValorActividad] = useState ("");
+const [arregloTareas, setArregloTareas] = useState ([]);
 
-const handlerChange = (e) =>{
-    setActividad({...actividad, [e.target.name]: e.target.value});
+const handlerEnter = (e) =>{
+       
+    if(e.keyCode===13){
+        setArregloTareas([...arregloTareas, valorActividad])
+
+        setValorActividad("")
+        // console.log(arregloTareas)
+    }
 }
-
 
     return (
         <div className="fondo d-flex justify-content-center">
@@ -17,26 +21,28 @@ const handlerChange = (e) =>{
                 <p className="titulo">ToDo<i className="mancuerna fa-solid fa-dumbbell"></i>List</p>
                 <div className="input-group mb-3">
                     <input type="text" 
-                    className="entrada form-control"
+                    className="entrada"
                     name="entrada" 
                     placeholder="Enter your work out" 
                     aria-label="entrada" 
                     aria-describedby="basic-addon1"
-                    onKeyDown={(e)=> handlerChange(e)}/>
+                    value={valorActividad}                    
+                    onChange={(e) => setValorActividad(e.target.value)}
+                    onKeyDown={(e)=> handlerEnter(e)}/>
                 </div>
                 <div>
                     <ol className="listaActividades">
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
-                        <li className="actividad"></li>
+                        {arregloTareas.map((tarea, i) => {
+                            return(
+                                <div key={i} className="listaActividades d-flex justify-content-between">
+                                    <li className="actividad">{tarea}</li>
+                                    <div className="eliminar text-danger">x</div>
+                                </div>
+                            )
+                        })}                        
                     </ol>
                 </div>
-                <div className="contador">...</div>
+                <div className="contador">{arregloTareas.length} PENDING ACTIVITIES</div>
             </div>
         </div>
     )
