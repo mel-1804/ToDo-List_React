@@ -56,9 +56,10 @@ body {
     border-radius: 15px;  
 }
 
-.eliminar:hover{
+/* .eliminar:hover{
     filter: brightness(130%);
-}
+    color: darkred;
+} */
 
 .contador{
     font-size: 11px;
