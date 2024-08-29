@@ -51,15 +51,16 @@ body {
     justify-content: center;
     color: rgb(54, 127, 127);
     font-weight: bolder;
+    background-color: rgb(208, 237, 237);
     border: solid;
     border-color: rgb(93, 158, 158);
     border-radius: 15px;  
 }
 
-/* .eliminar:hover{
+.eliminar:hover{
     filter: brightness(130%);
     color: darkred;
-} */
+}
 
 .contador{
     font-size: 11px;

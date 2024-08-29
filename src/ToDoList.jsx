@@ -3,16 +3,25 @@ export function ToDoList() {
 
     const [valorActividad, setValorActividad] = useState("");
     const [arregloTareas, setArregloTareas] = useState([]);
-    const [listaActividad, setListaActividad] = useState ("")
-        
+    
     const handlerEnter = (e) => {
         if (e.keyCode === 13) {
-            setArregloTareas([...arregloTareas, valorActividad])
-            setValorActividad("")
+            if(!arregloTareas.find((tarea)=>tarea==valorActividad)){
+                setArregloTareas([...arregloTareas, valorActividad])
+                setValorActividad("")
+            }
         }
     }
 
+    const handlerClick = (tarea) => {
+        const nuevoArregloTareas = arregloTareas.filter((item)=>item!=tarea)
+        setArregloTareas(nuevoArregloTareas)
+        console.log("ejecutando")
+        }
    
+  
+
+
     return (
         <div className="fondo d-flex justify-content-center">
             <div className="papel rounded-4 border border-4 p-4">
@@ -29,15 +38,15 @@ export function ToDoList() {
                         onKeyDown={(e) => handlerEnter(e)} />
                 </div>
                 <div>
-                    <ul className="listaActividades" value={listaActividad}>
+                    <ul className="listaActividades">
                         {arregloTareas.map((tarea, i) => {
                             return (
                                 <div key={i} className="listaActividades d-flex justify-content-between">
                                     <li className="actividad">{tarea}</li>
-                                    <div className="eliminar"
-                                    onClick={(e) => setListaActividad(delete(arregloTareas[i]))}>
+                                    <button className="eliminar"
+                                        onClick={() => handlerClick(tarea)}>
                                         x
-                                    </div>
+                                    </button>
                                 </div>
                             )
                         })}
